@@ -3,28 +3,28 @@ const container = document.querySelector('#container');
 let color = "black";
 
 function deleteGrid() {
-    const tempContainer = document.querySelector('#tempContainer');
-    container.removeChild(tempContainer);
+    const recycledContainer = document.querySelector('#recycledContainer');
+    container.removeChild(recycledContainer);
 
 }
 
 function generateGrid(size) {
-    const tempContrainer = document.createElement('div');
-    tempContrainer.id = "tempContainer";
+    const recycledContainer = document.createElement('div');
+    recycledContainer.id = "recycledContainer";
     let id = 0;
-    for(let ii = 0; ii < size; ii++) {
+    for(let i = 0; i < size; i++) {
         const row = document.createElement('div');
         row.classList.add('row');
-        for(let i = 0; i < size; i++) {
+        for(let j = 0; j < size; j++) {
             const div = document.createElement('div');
             div.classList.add('square');
             div.id = id;
             row.appendChild(div);
             id+=1;
         }
-        tempContrainer.append(row);
+        recycledContainer.append(row);
     }
-    container.appendChild(tempContrainer);
+    container.appendChild(recycledContainer);
 }
 
 function resizeSquares(size) {
@@ -32,12 +32,15 @@ function resizeSquares(size) {
 }
 
 const gridSizeInput = document.querySelector('#gridSizeInput');
-gridSizeInput.addEventListener('keyup', (e) => {
+gridSizeInput.addEventListener('input', (e) => {
     deleteGrid();
     generateGrid(e.target.value);
 });
 
 const squareSizeInput = document.querySelector('#squareSizeInput');
+squareSizeInput.addEventListener('input', (e) => {
+    resizeSquares(e.target.value);
+})
 squareSizeInput.addEventListener('keyup', (e) => {
     resizeSquares(e.target.value);
 })
@@ -70,7 +73,7 @@ function handleMouseOver(e) {
 
 root.addEventListener("mousedown", (e) => {
     const grandparent = e.target.parentElement?.parentElement;
-    if(grandparent && grandparent.id == "tempContainer") {
+    if(grandparent && grandparent.id == "recycledContainer") {
         console.log(e.target.parentElement.parentElement.id);
         e.preventDefault();
     }
