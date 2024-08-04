@@ -1,14 +1,18 @@
 const root = document.documentElement;
 const container = document.querySelector('#container');
 let color = "black";
+let mousePressed = false;
 
 function deleteGrid() {
     const recycledContainer = document.querySelector('#recycledContainer');
-    container.removeChild(recycledContainer);
+    if(recycledContainer) {
+        container.removeChild(recycledContainer);
+    }
 
 }
 
 function generateGrid(size) {
+    deleteGrid();
     const recycledContainer = document.createElement('div');
     recycledContainer.id = "recycledContainer";
     let id = 0;
@@ -25,6 +29,9 @@ function generateGrid(size) {
         recycledContainer.append(row);
     }
     container.appendChild(recycledContainer);
+    recycledContainer.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+    })
 }
 
 function resizeSquares(size) {
@@ -68,30 +75,26 @@ function colorSquare(e) {
 }
 
 function handleMouseOver(e) {
-    colorSquare(e);
+    if(mousePressed) {
+        colorSquare(e);
+    }
 }   
 
+container.addEventListener("mouseover", handleMouseOver);
+
 root.addEventListener("mousedown", (e) => {
-    const grandparent = e.target.parentElement?.parentElement;
-    if(grandparent && grandparent.id == "recycledContainer") {
-        console.log(e.target.parentElement.parentElement.id);
-        e.preventDefault();
-    }
+    mousePressed = true;
     if(e.button == 0) {
         draw = true;
     } else if(e.button == 2) {
-        draw = false
+        draw = false;
     }
     colorSquare(e);
-    container.addEventListener("mouseover", handleMouseOver);
+    
 })
 
 root.addEventListener("mouseup", (e) => {
-    container.removeEventListener("mouseover", handleMouseOver);
-})
-
-root.addEventListener("contextmenu", (e) => {
-    e.preventDefault();
+    mousePressed = false;
 })
 
 const colourPicker = document.querySelector('#colourPicker');
