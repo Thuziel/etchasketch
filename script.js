@@ -1,4 +1,6 @@
-const pageRef = document.querySelector('body');
-const newPar = document.createElement('p');
-newPar.textContent = "this is added with js"
-pageRef.appendChild(newPar);
+const container = document.querySelector('#container');
+for(let i = 0; i < 16; i++) {
+    const div = document.createElement('div');
+    div.classList.add('square');
+    container.appendChild(div);
+}
