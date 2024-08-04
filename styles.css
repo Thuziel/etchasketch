@@ -1,10 +1,10 @@
 :root {
     --square-size: 50px;
+    --border-width: 0px;
 }
 
 body {
     font-family: sans-serif;
-    font-size: xx-large;
     padding: 0;
     margin: 0;
 }
@@ -14,6 +14,10 @@ body {
     width: max-content;
 }
 
+#tempContainer {
+    border: 1px solid black;
+}
+    
 .row {
     display: flex;
     overflow: visible;
@@ -21,7 +25,8 @@ body {
 }
 
 .square {
-    border: 1px solid black;
+    border: var(--border-width) solid black;
     width: var(--square-size);
     height: var(--square-size);
+    background-color: white;
 }
