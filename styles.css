@@ -1,10 +1,27 @@
+:root {
+    --square-size: 50px;
+}
+
 body {
     font-family: sans-serif;
     font-size: xx-large;
+    padding: 0;
+    margin: 0;
+}
+
+#container {
+    padding: 50px;
+    width: max-content;
+}
+
+.row {
+    display: flex;
+    overflow: visible;
+    width: max-content;
 }
 
 .square {
     border: 1px solid black;
-    width: 50px;
-    height: 50px;
+    width: var(--square-size);
+    height: var(--square-size);
 }
