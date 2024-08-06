@@ -2,6 +2,8 @@ const root = document.documentElement;
 const container = document.querySelector('#container');
 let color = "black";
 let mousePressed = false;
+let ctrlPressed = null;
+let squareSize = 50;
 
 function deleteGrid() {
     const recycledContainer = document.querySelector('#recycledContainer');
@@ -35,7 +37,12 @@ function generateGrid(size) {
 }
 
 function resizeSquares(size) {
-    root.style.setProperty("--square-size", size+"px");
+    if(size > 0) {
+        root.style.setProperty("--square-size", size+"px");
+        squareSize = parseInt(size);    
+        squareSizeInput.value = squareSize;
+        squareSizeRange.value = squareSize;
+    } 
 }
 
 const gridSizeInput = document.querySelector('#gridSizeInput');
@@ -43,13 +50,33 @@ gridSizeInput.addEventListener('input', (e) => {
     deleteGrid();
     generateGrid(e.target.value);
 });
+gridSizeInput.addEventListener('keypress', (e) => {
+    if(e.key !== "e" && e.key !== "-"){
+        deleteGrid();
+        generateGrid(e.target.value);
+    } else {
+        e.preventDefault();
+    }
+})
 
 const squareSizeInput = document.querySelector('#squareSizeInput');
+const squareSizeRange = document.querySelector('#squareSizeRange');
 squareSizeInput.addEventListener('input', (e) => {
     resizeSquares(e.target.value);
 })
-squareSizeInput.addEventListener('keyup', (e) => {
+squareSizeInput.addEventListener('keypress', (e) => {
+    if(e.key !== "e" && e.key !== "-"){
+        resizeSquares(e.target.value);
+    } else {
+        e.preventDefault();
+        console.log(e.key)
+    }
+    
+})
+
+squareSizeRange.addEventListener('input', (e) => {
     resizeSquares(e.target.value);
+    squareSizeInput.value = e.target.value;
 })
 
 const borderCheckbox = document.querySelector('#borderInput');
@@ -65,6 +92,7 @@ let draw = true;
 
 function colorSquare(e) {
     if(e.target.classList == 'square') {
+        e.preventDefault();
         if(draw == true) {
             e.target.style.backgroundColor = color;
         } 
@@ -102,4 +130,34 @@ colourPicker.addEventListener('input', (e) => {
     color = e.target.value;
 })
 
+let tempMousePosX = null;
+let tempSquareSize = null;
+root.addEventListener('mousemove', (e) => {
+    if(ctrlPressed == true) {
+        if(tempMousePosX == null && tempSquareSize == null) {
+            tempMousePosX = e.clientX;
+            tempSquareSize = squareSize;
+        }
+        
+            resizeSquares(tempSquareSize + ((tempMousePosX - e.clientX)*-1));
+            console.log(squareSize);
+    }
+})
+
+root.addEventListener('keydown', (e) => {
+    if(e.key == "Control") {
+        ctrlPressed = true;
+    }
+})
+
+root.addEventListener('keyup', (e) => {
+    if(e.key == "Control") {
+        ctrlPressed = false;
+        tempMousePosX = null;
+        tempSquareSize = null;
+    }
+})
+
 generateGrid(4);
+
+alert("Hold control and move your mouse to zoom in and out.")

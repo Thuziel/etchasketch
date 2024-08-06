@@ -3,19 +3,22 @@
     --border-width: 0px;
 }
 
-body {
+html, body {
     font-family: sans-serif;
     padding: 0;
     margin: 0;
+    height: 100%;
 }
 
 #container {
-    padding: 50px;
-    width: max-content;
+    display: flex;
+    
 }
 
 #recycledContainer {
     border: 1px solid black;
+    width: min-content;
+    
 }
     
 .row {
