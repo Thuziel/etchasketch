@@ -1,6 +1,6 @@
 :root {
     --square-size: 50px;
-    --border-width: 0px;
+    --border-width: 1px;
 }
 
 html, body {
@@ -9,17 +9,21 @@ html, body {
     margin: 0;
 }
 
+main {
+    display: flex;
+    margin-top: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
 #container {
     display: flex;
-    margin: 100px;
-    border: 1px solid black;
-    
+    width: min-content;
 }
 
 #recycledContainer {
     border: 1px solid black;
     width: min-content;
-    
 }
     
 .row {
@@ -39,9 +43,14 @@ html, body {
     position: fixed;
     width: 100%;
     top: 0;
-    padding: 20px;  
+    padding: 24px;  
     font-size: larger;
     font-weight: bold;
+    background-color: white;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #navbar form {
