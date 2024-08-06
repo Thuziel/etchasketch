@@ -1,6 +1,7 @@
 const root = document.documentElement;
 const container = document.querySelector('#container');
 let color = "black";
+let color2 = "white";
 let mousePressed = false;
 let ctrlPressed = null;
 let squareSize = 50;
@@ -97,7 +98,7 @@ function colorSquare(e) {
             e.target.style.backgroundColor = color;
         } 
         else if(draw == false) {
-            e.target.style.backgroundColor = "white";
+            e.target.style.backgroundColor = color2;
         }
     }
 }
@@ -128,6 +129,11 @@ root.addEventListener("mouseup", (e) => {
 const colourPicker = document.querySelector('#colourPicker');
 colourPicker.addEventListener('input', (e) => {
     color = e.target.value;
+})
+
+const colourPicker2 = document.querySelector('#colourPicker2');
+colourPicker2.addEventListener('input', (e) => {
+    color2 = e.target.value;
 })
 
 let tempMousePosX = null;

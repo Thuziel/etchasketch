@@ -59,7 +59,7 @@ html, body {
     display: inline;
 }
 
-#colourPicker {
+.colourPicker {
     all: unset;
     width: 300%;
     height: 300%;
@@ -68,7 +68,7 @@ html, body {
     transform: translate(-25%, -25%);
 }
 
-#colourPickerWrapper {
+.colourPickerWrapper {
     border-radius: 100px;
     overflow: hidden;
     width: 48px;
@@ -95,4 +95,11 @@ html, body {
     display: flex;
     align-items: center;
     gap: 6px;
+}
+
+#colorPickers {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
 }
