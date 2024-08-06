@@ -160,4 +160,4 @@ root.addEventListener('keyup', (e) => {
 
 generateGrid(4);
 
-alert("Hold control and move your mouse to zoom in and out.")
+//alert("Hold control and move your mouse to zoom in and out.")

@@ -7,11 +7,12 @@ html, body {
     font-family: sans-serif;
     padding: 0;
     margin: 0;
-    height: 100%;
 }
 
 #container {
     display: flex;
+    margin: 100px;
+    border: 1px solid black;
     
 }
 
@@ -32,4 +33,66 @@ html, body {
     width: var(--square-size);
     height: var(--square-size);
     background-color: white;
+}
+
+#navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 20px;  
+    font-size: larger;
+    font-weight: bold;
+}
+
+#navbar form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.blockDisplay {
+    display: block;
+}
+
+.inlineDisplay {
+    display: inline;
+}
+
+#colourPicker {
+    all: unset;
+    width: 300%;
+    height: 300%;
+    margin: 0;
+    padding: 0;
+    transform: translate(-25%, -25%);
+}
+
+#colourPickerWrapper {
+    border-radius: 100px;
+    overflow: hidden;
+    width: 48px;
+    height: 48px;
+    border: 2px solid black;
+}
+
+.numberInput {
+    font-size: medium;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 4px;
+}
+
+.borderCheckbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.borderInput {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
