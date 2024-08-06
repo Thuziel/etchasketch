@@ -48,7 +48,6 @@ function resizeSquares(size) {
 
 const gridSizeInput = document.querySelector('#gridSizeInput');
 gridSizeInput.addEventListener('input', (e) => {
-    deleteGrid();
     generateGrid(e.target.value);
 });
 gridSizeInput.addEventListener('keypress', (e) => {
@@ -162,6 +161,17 @@ root.addEventListener('keyup', (e) => {
         tempMousePosX = null;
         tempSquareSize = null;
     }
+})
+
+const clearBtn = document.querySelector('#clearBtn');
+clearBtn.addEventListener("click", (e) => {
+    generateGrid(gridSizeInput.value);
+})
+
+const closeModal = document.querySelector("#closeModal");
+const modal = document.querySelector("#popup");
+closeModal.addEventListener("click", (e) => {
+    modal.style.display = "none";
 })
 
 generateGrid(4);

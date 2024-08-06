@@ -20,7 +20,7 @@
                 <label for="squareSizeInput" class="inlineDisplay">Zoom</label>
                 <input type="range" id="squareSizeRange" value="50" min="3" max="100" class="inlineDisplay">
                 <input type="number" id="squareSizeInput" value="50" min="1" class="blockDisplay numberInput">
-            </div>
+            </div> 
             <div class="borderInput">
                 <label for="borderInput">Borders</label>
                 <input type="checkbox" checked id="borderInput" class="borderCheckbox">
@@ -33,10 +33,26 @@
                     <input type="color" value="#FFFFFF" id="colourPicker2" class="inlineDisplay colourPicker">
                 </div>
             </div>
+            <div>
+                <button type="button" id="clearBtn">Clear</button>
+            </div>
         </form>
     </nav>
     <main>
         <div id="container"></div>
     </main>
+    <section id="popup">
+        <div id="modal">
+            <div id="tooltipHeader" >
+                <h2>Tooltip</h2>
+            </div>
+            <div id="toolTipContent">
+                <p>Hold down Control and then move you mouse left or right to zoom in or out on you drawing.</p>
+            </div>
+            <div id="tooltipFooter">
+                <button id="closeModal">Cool</button>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
